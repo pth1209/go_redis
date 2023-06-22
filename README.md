@@ -1,5 +1,11 @@
 # Create go web server with redis database
 
+## Create redis network
+```
+docker network create redis
+```
+
+
 ## Start redis database
 ```
 cd redis
