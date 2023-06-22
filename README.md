@@ -23,6 +23,7 @@ docker run -d --rm --name redis-2 \
     redis:6.0-alpine redis-server /etc/redis/redis.conf
 ```
 
+
 ## Start sentinel (handles automatic failover in redis database)
 ```
 cd redis (if already not in redis directory)
@@ -39,3 +40,17 @@ docker run -d --rm --name sentinel-2 --net redis \
     redis:6.0-alpine \
     redis-sentinel /etc/redis/sentinel.conf
 ```
+
+## Build and run in docker
+```
+cd go_server
+docker build . -t videos
+docker run -it -p 80:80 \
+  --net redis \
+  -e REDIS_SENTINELS="sentinel-0:5000,sentinel-1:5000,sentinel-2:5000" \
+  -e REDIS_MASTER_NAME="mymaster" \
+  -e REDIS_PASSWORD="a-very-complex-password-here" \
+  videos
+```
+
+## Set / POST data to redis
