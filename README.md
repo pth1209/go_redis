@@ -60,3 +60,5 @@ docker run -it -p 80:80 \
 ```
 
 ## Set / POST data to redis
+
+Post data in JSON format through http://localhost:80/update
