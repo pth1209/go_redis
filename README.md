@@ -9,6 +9,8 @@ docker network create redis
 ## Start redis database
 ```
 cd redis
+'''
+'''
 docker run -d --rm --name redis-0 \
     --net redis \
     -v ${PWD}/redis-0:/etc/redis/ \
@@ -27,6 +29,8 @@ docker run -d --rm --name redis-2 \
 ## Start sentinel (handles automatic failover in redis database)
 ```
 cd redis (if already not in redis directory)
+```
+```
 docker run -d --rm --name sentinel-0 --net redis \
     -v ${PWD}/sentinel-0:/etc/redis/ \
     redis:6.0-alpine \
@@ -45,6 +49,8 @@ docker run -d --rm --name sentinel-2 --net redis \
 ```
 cd go_server
 docker build . -t videos
+```
+```
 docker run -it -p 80:80 \
   --net redis \
   -e REDIS_SENTINELS="sentinel-0:5000,sentinel-1:5000,sentinel-2:5000" \
