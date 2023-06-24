@@ -9,9 +9,9 @@ docker network create redis
 ## Start redis database
 ```
 cd redis
-'''
+```
 
-'''
+```
 docker run -d --rm --name redis-0 \
     --net redis \
     -v ${PWD}/redis-0:/etc/redis/ \
