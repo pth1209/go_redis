@@ -10,6 +10,7 @@ docker network create redis
 ```
 cd redis
 '''
+
 '''
 docker run -d --rm --name redis-0 \
     --net redis \
